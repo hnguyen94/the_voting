@@ -7,12 +7,17 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-#user-widget
-  - if current_user
-    Welcome
-    = succeed "!" do
-      %strong= current_user.name
-      = image_tag current_user.image
-    = link_to "Sign out", signout_path, id: "sign_out"
-  - else
-    = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
+    .navbar.navbar-inverse.navbar-fixed-top{role: 'navigation'}
+      .container
+        .navbar-header
+          %button.navbar-toggle{'data-target' => '.navbar-collapse', 'data-toggle' => 'collapse', type: 'button'}
+            %span.sr-only Toggle Navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+
+          = link_to 'The Voting Game', root_path, class: 'navbar-brand'
+
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav.pull-right
+            %li= show_login_button
