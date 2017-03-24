@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
+  resources :games do
+    member do
+      post 'start'
+      get 'introduction'
+      get 'copy'
+    end
+  end
+
   get 'welcome/index'
   root 'welcome#index'
   
