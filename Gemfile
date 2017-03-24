@@ -34,10 +34,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'bootstrap-sass'
 
 gem 'haml'
 gem 'haml-rails'
-gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
