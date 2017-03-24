@@ -75,6 +75,8 @@ GEM
     ffi (1.9.18)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    haml (4.0.7)
+      tilt
     hashie (3.5.5)
     hirb (0.7.3)
     i18n (0.8.1)
@@ -236,6 +238,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   devise
+  haml
   hirb
   jbuilder (~> 2.5)
   jquery-rails
