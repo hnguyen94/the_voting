@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class GamesController < ApplicationController
   before_filter :find_game_params, except: [:index, :new, :create]
   before_filter :logged_in?
@@ -6,15 +7,13 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @game = Game.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @game = Game.new(game_params)
@@ -40,9 +39,9 @@ class GamesController < ApplicationController
     redirect_to games_path
   end
 
-  # def start
-  #   Game.update(@game.id, status: 'live')
-  # end
+  def start
+    Game.update(@game.id, status: 'live')
+  end
 
   private
 
