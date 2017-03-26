@@ -1,0 +1,36 @@
+#game-start {
+  .content-container {
+    width: 600px;
+    min-height: 340px;
+    margin: $space-l auto;
+  }
+
+  .player-list {
+    display: block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .player {
+    display: none;
+
+    img {
+      display: block;
+      margin: 0 auto $space;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    }
+
+    .option {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  .loading {
+    text-align: center;
+    line-height: 260px;
+  }
+}

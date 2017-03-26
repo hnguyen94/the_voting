@@ -1,0 +1,16 @@
+@mixin clearline {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+.clearline {
+  @include clearline;
+}
+
+
+body {
+  padding-top: 60px
+}

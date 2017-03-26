@@ -1,0 +1,43 @@
+.game-container {
+  .title {
+    margin-top: 0;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .description {
+    margin: 0;
+  }
+
+  .dropdown {
+    margin-left: $space-l;
+  }
+
+  .label {
+    font-size: 14px;
+    width: 70px;
+  }
+}
+
+.comment {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: $space;
+  padding-bottom: $space;
+
+  &:last-child {
+    border: none;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  .img-thumbnail {
+    float: left;
+    margin-right: 16px;
+  }
+}

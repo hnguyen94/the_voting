@@ -1,0 +1,18 @@
+$_table_control_width: 250px;
+$_table_control_width_extended: $_table_control_width + 100px;
+
+td.controls, th.controls {
+  width: $_table_control_width;
+  max-width: $_table_control_width;
+  min-width: $_table_control_width;
+
+  &.extended {
+    width: $_table_control_width_extended;
+    max-width: $_table_control_width_extended;
+    min-width: $_table_control_width_extended;
+  }
+
+  .btn {
+    margin: 0 $space 0 0;
+  }
+}

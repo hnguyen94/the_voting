@@ -1,0 +1,15 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "base/settings";
+@import "base/core";
+
+@import "layouts/games";
+@import "layouts/game_start";
+
+@import "modules/table";
+@import "modules/forms";
+@import "modules/nav";
+@import "modules/buttons";
+@import "modules/wells";
