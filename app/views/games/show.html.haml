@@ -1,2 +1,32 @@
-%h1 Games#show
-%p Find me in app/views/games/show.html.haml
+
+%h1
+  = @game.title
+  = status_label_for(@game)
+
+%p= simple_format @game.description
+
+%hr
+.well.well-sm
+  %p
+    - if game_can_start?(@game) && is_current_user_game_owner?(@game,current_user.id)
+      = button_to "START THE GAME", start_game_path(@game), method: :post, class:"btn btn-success btn-lg"
+    - if game_is_open?(@game)
+      %p
+        This game is open and ready to join. You can join the game using the 'Add me' button below.
+    - if game_is_live?(@game)
+      %p
+        This game has started and is in progress. Good luck!
+    - if game_is_closed?(@game)
+      %p This game has closed. Congratulations to the winner.
+
+%hr
+
+.well
+  %h2 Players
+  %table.table.table-striped.table-bordered.table-condensed
+    = render @game.players, game: @game
+  - if game_is_open?(@game)
+    - if @game.participating?(current_user)
+      = link_to 'Remove me', game_player_path(@game, current_user), method: :delete, class:"btn btn-danger"
+    - else
+      = link_to 'Add me', game_players_path(@game), :method => :post, class:"btn btn-success"
