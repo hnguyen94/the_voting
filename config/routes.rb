@@ -3,14 +3,18 @@ Rails.application.routes.draw do
   resources :games do
     member do
       post 'start'
-      get 'introduction'
-      get 'copy'
+    end
+    resources :players, only: [:create, :destroy] do
+      member do
+        put 'like' => 'players#upvote'
+      end
     end
   end
 
   get 'welcome/index'
   root 'welcome#index'
-  
+
+
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]

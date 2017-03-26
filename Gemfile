@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
 
+gem 'acts_as_votable'
 gem 'haml'
 gem 'haml-rails'
 gem 'omniauth'

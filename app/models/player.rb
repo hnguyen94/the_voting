@@ -1,4 +1,8 @@
+# frozen_string_literal: true
 class Player < ApplicationRecord
+  acts_as_voter
+  acts_as_votable
+
   belongs_to :game
   belongs_to :user
 
