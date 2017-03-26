@@ -1,2 +1,12 @@
-%h1 Games#index
-%p Find me in app/views/games/index.html.haml
+= button_to 'Start a new Game', new_game_path, class:"btn btn-primary title-button", method: :get
+%h1 Games
+
+- @games.each do |game|
+  .well.game-container
+    = status_label_for(game)
+
+    %h3.title= link_to game.title, game
+
+    = render partial: 'actions', locals: {game: game}
+
+    %p.description= simple_format game.description
