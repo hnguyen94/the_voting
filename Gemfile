@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
 
-gem 'acts_as_votable'
+# gem 'acts_as_votable'
 gem 'haml'
 gem 'haml-rails'
 gem 'omniauth'
@@ -48,14 +48,13 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'byebug', platform: :mri
-  gem 'hirb'
   gem 'pry-byebug'
   gem 'pry-coolline'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
-  gem 'rubocop'
   gem 'railroady'
+  gem 'rubocop'
 end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
