@@ -41,6 +41,7 @@ class GamesController < ApplicationController
 
   def start
     Game.update(@game.id, status: 'live')
+    redirect_to @game
   end
 
   private
