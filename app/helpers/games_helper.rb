@@ -1,20 +1,21 @@
+# frozen_string_literal: true
 module GamesHelper
   GAME_LABEL_CLASSES = {
     open: 'label-info',
     live: 'label-success',
     closed: 'label-danger'
-  }
+  }.freeze
 
   def game_is_open?(game)
-    game.status == "open"
+    game.status == 'open'
   end
 
   def game_is_live?(game)
-    game.status == "live"
+    game.status == 'live'
   end
 
   def game_is_closed?(game)
-    game.status == "closed"
+    game.status == 'closed'
   end
 
   def get_player_from_user(game, user_id)
@@ -26,7 +27,7 @@ module GamesHelper
   end
 
   def game_can_start?(game)
-    game.status == "open" && game.players.count > 0
+    game.status == 'open' && game.players.count > 0
   end
 
   def status_label_for(game)
