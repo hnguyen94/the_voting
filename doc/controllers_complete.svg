@@ -58,7 +58,7 @@
 <polyline fill="none" stroke="#000000" points="160,-280.5 274.7588,-280.5 "/>
 <text text-anchor="start" x="168" y="-265.3" font-family="Times,serif" font-size="14.00" fill="#000000">create</text>
 <text text-anchor="start" x="168" y="-251.3" font-family="Times,serif" font-size="14.00" fill="#000000">destroy</text>
-<text text-anchor="start" x="168" y="-237.3" font-family="Times,serif" font-size="14.00" fill="#000000">downvote</text>
+<text text-anchor="start" x="168" y="-237.3" font-family="Times,serif" font-size="14.00" fill="#000000">unvote</text>
 <text text-anchor="start" x="168" y="-223.3" font-family="Times,serif" font-size="14.00" fill="#000000">index</text>
 <text text-anchor="start" x="168" y="-209.3" font-family="Times,serif" font-size="14.00" fill="#000000">upvote</text>
 <polyline fill="none" stroke="#000000" points="160,-202.5 274.7588,-202.5 "/>
