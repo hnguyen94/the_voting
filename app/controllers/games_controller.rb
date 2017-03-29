@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class GamesController < ApplicationController
   before_filter :find_game_params, except: [:index, :new, :create]
-  before_filter :logged_in?
+  before_filter :ensure_logged_in
 
   def index
     @games = Game.all

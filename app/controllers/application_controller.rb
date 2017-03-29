@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def logged_in?
+  def ensure_logged_in
     redirect_to root_path unless current_user
   end
 
