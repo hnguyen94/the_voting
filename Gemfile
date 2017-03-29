@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass'
 
 # gem 'acts_as_votable'
+gem 'thumbs_up'
 gem 'haml'
 gem 'haml-rails'
 gem 'omniauth'
