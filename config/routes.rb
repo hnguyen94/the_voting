@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :games do
     member do
       post 'start'
+      delete 'reset_votes'
     end
     resources :players, only: [:create, :destroy] do
       member do

@@ -44,6 +44,12 @@ class GamesController < ApplicationController
     redirect_to @game
   end
 
+  def reset_votes
+    Vote.delete_all # if current_user.id == @game.owner
+
+    redirect_to @game
+  end
+
   private
 
   def find_game_params

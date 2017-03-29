@@ -3,7 +3,7 @@
     = player.name
     = image_tag(player.image, alt: "player")
 
-  - if game_is_open?(game)
+  - if game_is_live?(game)
     %td
       = link_to 'Upvote', upvote_game_player_path(game ,player), method: :post
       = link_to 'unvote', unvote_game_player_path(game, player), method: :post
