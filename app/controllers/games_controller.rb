@@ -45,7 +45,10 @@ class GamesController < ApplicationController
   end
 
   def reset_votes
-    Vote.delete_all # if current_user.id == @game.owner
+    if current_user.id == @game.owner
+      Vote.delete_all
+      flash[:notice] = 'Votes resetted'
+    end
 
     redirect_to @game
   end
