@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     end
     resources :players, only: [:create, :destroy] do
       member do
-        put 'like' => 'players#upvote'
+        post 'upvote'
+        post 'unvote'
       end
     end
   end

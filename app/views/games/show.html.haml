@@ -24,7 +24,9 @@
 .well
   %h2 Players
   %table.table.table-striped.table-bordered.table-condensed
-    = render @game.players, game: @game
+    - @game.players.each do |player|
+      = render 'players/player', player: player, game: @game
+
   - if game_is_open?(@game)
     - if @game.participating?(current_user)
       = link_to 'Remove me', game_player_path(@game, current_user), method: :delete, class:"btn btn-danger"
