@@ -43,7 +43,7 @@ class PlayersController < ApplicationController
   private
 
   def set_player
-    @player = Player.find_by!(user_id: params[:id])
+    @player = Player.find_by!(id: params[:id])
   end
 
   def set_game
@@ -51,6 +51,10 @@ class PlayersController < ApplicationController
   end
 
   def set_current_player
-    @current_player = Player.find_by(user_id: current_user.id)
+    @current_player = Player.find_by!(user_id: current_user.id)
   end
+  # def player_params
+  #   params.require(:player).permit(:user_id, :player_id)
+  #   params.require(:player).permit(:user_id)
+  # end
 end
