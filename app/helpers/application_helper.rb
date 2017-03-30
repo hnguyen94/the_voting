@@ -4,7 +4,8 @@ module ApplicationHelper
     # NOTE: Research for current_user&.name
     # current_user.name if current_user
     # current_user&.name
-    current_user.name if current_user
+    # current_user.name if current_user
+    current_user&.name
   end
 
   def show_login_button
