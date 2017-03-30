@@ -1,5 +1,5 @@
 %tr
-  - if current_user.id != player.user_id
+  - if current_user.id != player.user_id || action_name == 'show_results'
     %td
       %span.panel-primary= player.name
       = image_tag(player.image, alt: "player")
