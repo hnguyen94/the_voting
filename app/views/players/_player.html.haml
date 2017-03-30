@@ -6,10 +6,12 @@
 
   - if game_is_live?(game) && current_user.id != player.id && action_name != 'show_results'
     %td
-      -# - if @current_player.vote_count == 0
-      = link_to 'Upvote', upvote_game_player_path(game ,player), method: :post
-      -# - elsif @current_player.vote_count != 1
-      = link_to 'unvote', unvote_game_player_path(game, player), method: :post
+      - if @current_player.voted? && @current_player.voted_for?(player)
+        = link_to 'unvote', unvote_game_player_path(game, player), method: :post
+      - elsif !@current_player.voted?
+        = link_to 'Upvote', upvote_game_player_path(game ,player), method: :post
+  - else
+    %td
 
       -# %button.btn.btn-info{:type => "button"}
       -#   %span.glyphicon.glyphicon-thumbs-up.glyphicon-align-center

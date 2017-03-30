@@ -7,7 +7,9 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
-  def show; end
+  def show
+    @current_player = Player.find_by(user_id: current_user.id)
+  end
 
   def new
     @game = Game.new
