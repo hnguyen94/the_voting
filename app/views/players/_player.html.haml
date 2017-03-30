@@ -1,24 +1,18 @@
 %tr
-  %td
-    = player.name
-    = image_tag(player.image, alt: "player")
-    = player.votes_for if action_name == 'show_results'
-
-  - if game_is_live?(game) && current_user.id != player.id && action_name != 'show_results'
+  - if current_user.id != player.user_id
     %td
-      - if @current_player.voted? && @current_player.voted_for?(player)
-        = link_to 'unvote', unvote_game_player_path(game, player), method: :post
-      - elsif !@current_player.voted?
-        = link_to 'Upvote', upvote_game_player_path(game ,player), method: :post
-  - elsif action_name != 'show_results'
-    %td
+      %span.panel-primary= player.name
+      = image_tag(player.image, alt: "player")
+      %span.badge.badge-size= player.votes_for if action_name == 'show_results'
 
-      -# %button.btn.btn-info{:type => "button"}
-      -#   %span.glyphicon.glyphicon-thumbs-up.glyphicon-align-center
-      -#   %span.badge= player.get_upvotes.size
-
-
-
+    - if game_is_live?(game) && current_user.id != player.user_id && action_name != 'show_results'
+      %td{style: 'line-height: 3.6'}
+        - if @current_player.voted? && @current_player.voted_for?(player)
+          = link_to unvote_game_player_path(game, player), method: :post do
+            %span.glyphicon.glyphicon-remove.icon-size.icon-danger
+        - elsif !@current_player.voted?
+          = link_to upvote_game_player_path(game ,player), method: :post do
+            %span.glyphicon.glyphicon-ok.icon-size.icon-success
 
   - if game_is_open?(game) && is_current_user_game_owner?(game,current_user.id)
     %td= link_to 'Delete', game_player_path(game, player), method: :delete, class:"btn btn-danger"
