@@ -10,7 +10,7 @@
         = link_to 'unvote', unvote_game_player_path(game, player), method: :post
       - elsif !@current_player.voted?
         = link_to 'Upvote', upvote_game_player_path(game ,player), method: :post
-  - else
+  - elsif action_name != 'show_results'
     %td
 
       -# %button.btn.btn-info{:type => "button"}

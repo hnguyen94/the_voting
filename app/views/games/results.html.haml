@@ -15,5 +15,5 @@
 .well
   %h2 Players
   %table.table.table-striped.table-bordered.table-condensed
-    - @game.players.each do |player|
+    - @game.players.order('votes desc').each do |player|
       = render 'players/player', player: player, game: @game
