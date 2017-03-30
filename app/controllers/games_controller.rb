@@ -36,12 +36,24 @@ class GamesController < ApplicationController
 
   def destroy
     @game.destroy
+
     redirect_to games_path
   end
 
   def start
     Game.update(@game.id, status: 'live')
+
     redirect_to @game
+  end
+
+  def show_results
+    if Vote.all.count != @game.players.count
+      flash[:alert] = 'Not everyone has voted'
+
+      return redirect_to @game
+    end
+
+    render 'games/results'
   end
 
   def reset_votes

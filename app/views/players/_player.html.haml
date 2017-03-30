@@ -2,11 +2,15 @@
   %td
     = player.name
     = image_tag(player.image, alt: "player")
+    = player.votes_for if action_name == 'show_results'
 
-  - if game_is_live?(game)
+  - if game_is_live?(game) && current_user.id != player.id && action_name != 'show_results'
     %td
+      -# - if @current_player.vote_count == 0
       = link_to 'Upvote', upvote_game_player_path(game ,player), method: :post
+      -# - elsif @current_player.vote_count != 1
       = link_to 'unvote', unvote_game_player_path(game, player), method: :post
+
       -# %button.btn.btn-info{:type => "button"}
       -#   %span.glyphicon.glyphicon-thumbs-up.glyphicon-align-center
       -#   %span.badge= player.get_upvotes.size

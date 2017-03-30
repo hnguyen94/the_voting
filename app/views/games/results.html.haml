@@ -1,0 +1,19 @@
+%h1
+  = link_to @game.title, game_path(@game)
+  = status_label_for(@game)
+
+%hr
+.well.well-sm
+  %p
+    - if game_is_live?(@game) && is_current_user_game_owner?(@game, current_user.id)
+      = link_to 'Reset votes', reset_votes_game_path(@game), method: :delete
+    - if game_is_closed?(@game)
+      %p This game has closed. Congratulations to the winner.
+
+%hr
+
+.well
+  %h2 Players
+  %table.table.table-striped.table-bordered.table-condensed
+    - @game.players.each do |player|
+      = render 'players/player', player: player, game: @game
