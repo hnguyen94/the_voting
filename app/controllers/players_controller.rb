@@ -29,6 +29,7 @@ class PlayersController < ApplicationController
 
     @current_player.vote_for @player
     @player.update(votes: @player.votes_count)
+
     flash[:notice] = 'You have voted!'
     redirect_to game_path(@game)
   end
@@ -36,6 +37,7 @@ class PlayersController < ApplicationController
   def unvote
     @current_player.unvote_for @player
     @player.update(votes: @player.votes_count)
+    
     flash[:notice] = 'You have unvoted!'
     redirect_to game_path(@game)
   end
