@@ -10,12 +10,6 @@ class Game < ApplicationRecord
 
   default_scope { order('created_at DESC') }
 
-  after_initialize :init
-
-  def init
-    self.status ||= 'open'
-  end
-
   def participating?(user)
     !!players.find_by(user_id: user)
   end
