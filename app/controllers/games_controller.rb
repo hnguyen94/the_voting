@@ -8,7 +8,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    if !current_user_in_game? && @game.live?
+    if !current_user_in_game? && @game.live? && @game.owner != current_user.id
       flash[:alert] = 'You can not enter a running game!'
 
       return redirect_to games_path
