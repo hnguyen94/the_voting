@@ -22,7 +22,7 @@ module GamesHelper
     player = game.players.find_all { |player| player.user_id == user_id }
   end
 
-  def is_current_user_game_owner?(game, user_id)
+  def current_user_game_owner?(game, user_id)
     game.owner == user_id
   end
 

@@ -5,7 +5,7 @@
 %hr
 .well.well-sm
   %p
-    - if game_is_live?(@game) && is_current_user_game_owner?(@game, current_user.id)
+    - if game_is_live?(@game) && current_user_game_owner?(@game, current_user.id)
       = link_to 'Reset votes', reset_votes_game_path(@game), method: :delete
     - if game_is_closed?(@game)
       %p This game has closed. Congratulations to the winner.

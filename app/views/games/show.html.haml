@@ -8,13 +8,13 @@
 %hr
 .well.well-sm
   %p
-    - if game_can_start?(@game) && is_current_user_game_owner?(@game,current_user.id)
+    - if game_can_start?(@game) && current_user_game_owner?(@game,current_user.id)
       = button_to "START THE GAME", start_game_path(@game), method: :post, class:"btn btn-success btn-lg"
     - if game_is_open?(@game)
       %p This game is open and ready to join. You can join the game using the 'Add me' button below.
     - if game_is_live?(@game)
       %p This game has started and is in progress. Good luck!
-    - if game_is_live?(@game) && is_current_user_game_owner?(@game, current_user.id)
+    - if game_is_live?(@game) && current_user_game_owner?(@game, current_user.id)
       = link_to 'Reset votes', reset_votes_game_path(@game), method: :delete, class: "btn btn-danger"
       = link_to 'Show results', show_results_game_path(@game), method: :get, class: "btn btn-success"
     - if game_is_closed?(@game)
