@@ -29,4 +29,8 @@ class Game < ApplicationRecord
   def start?
     self.status == 'open' && self.players.count.positive?
   end
+
+  def owner_name
+    User.find_by(id: self.owner).name
+  end
 end

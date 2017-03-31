@@ -9,4 +9,4 @@
 
     = render partial: 'actions', locals: {game: game}
 
-    %p.description= simple_format game.description
+    %p.description= "Owner: #{game.owner_name}"

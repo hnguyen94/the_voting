@@ -7,6 +7,8 @@
 
 %hr
 .well.well-sm
+  %strong= "Owner: #{@game.owner_name}"
+
   %p
     - if @game.start? && current_user_game_owner?(@game,current_user.id)
       = button_to "START THE GAME", start_game_path(@game), method: :post, class:"btn btn-success btn-lg"
