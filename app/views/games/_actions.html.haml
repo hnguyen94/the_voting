@@ -1,8 +1,8 @@
-.dropdown.pull-right
-  %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button", id: "actions-#{game.id}"}
-    Actions
-    %span.caret
-  %ul.dropdown-menu{"aria-labelledby" => "actions-#{game.id}"}
-    - if current_user_game_owner?(game, current_user.id)
+- if current_user_game_owner?(game, current_user.id)
+  .dropdown.pull-right
+    %button.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button", id: "actions-#{game.id}"}
+      Actions
+      %span.caret
+    %ul.dropdown-menu{"aria-labelledby" => "actions-#{game.id}"}
       %li= link_to 'Edit', edit_game_path(game)
       %li= link_to 'Delete', game_path(game), method: :delete, data: {confirm: 'Are you sure?'}
