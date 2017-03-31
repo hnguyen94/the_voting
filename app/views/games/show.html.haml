@@ -15,7 +15,7 @@
       %p This game is open and ready to join. You can join the game using the 'Add me' button below.
 
     - if @game.live?
-      %p This game has started and is in progress. Good luck!
+      %p This game has started and is in progress. Good luck! Press the green button to vote for someone or the red button to unvote/undo, then wait!
 
     - if @game.live? && current_user_game_owner?(@game, current_user.id)
       = link_to 'Reset votes', reset_votes_game_path(@game), method: :delete, class: "btn btn-danger"
