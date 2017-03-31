@@ -13,4 +13,20 @@ class Game < ApplicationRecord
   def participating?(user)
     !!players.find_by(user_id: user)
   end
+
+  def open?
+    self.status == 'open'
+  end
+
+  def live?
+    self.status == 'live'
+  end
+
+  def closed?
+    self.status == 'closed'
+  end
+
+  def start?
+    self.status == 'open' && self.players.count.positive?
+  end
 end

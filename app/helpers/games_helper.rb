@@ -6,28 +6,12 @@ module GamesHelper
     closed: 'label-danger'
   }.freeze
 
-  def game_is_open?(game)
-    game.status == 'open'
-  end
-
-  def game_is_live?(game)
-    game.status == 'live'
-  end
-
-  def game_is_closed?(game)
-    game.status == 'closed'
-  end
-
   def get_player_from_user(game, user_id)
     player = game.players.find_all { |player| player.user_id == user_id }
   end
 
   def current_user_game_owner?(game, user_id)
     game.owner == user_id
-  end
-
-  def game_can_start?(game)
-    game.status == 'open' && game.players.count > 0
   end
 
   def status_label_for(game)

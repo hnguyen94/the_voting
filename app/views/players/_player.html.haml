@@ -4,7 +4,7 @@
     = image_tag(player.image, alt: "player")
     %span.badge.badge-size= player.votes_for if action_name == 'show_results'
 
-  - if game_is_live?(game) && current_user.id != player.user_id && action_name != 'show_results'
+  - if game.live? && current_user.id != player.user_id && action_name != 'show_results'
     %td{style: 'line-height: 3.6'}
       - if @current_player.voted? && @current_player.voted_for?(player)
         = link_to unvote_game_player_path(game, player), method: :post do
