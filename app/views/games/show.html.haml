@@ -14,15 +14,12 @@
     - if @game.open?
       %p This game is open and ready to join. You can join the game using the 'Add me' button below.
 
-    - if game_is_live?(@game)
+    - if @game.live?
       %p This game has started and is in progress. Good luck!
 
-    - if game_is_live?(@game) && current_user_game_owner?(@game, current_user.id)
+    - if @game.live? && current_user_game_owner?(@game, current_user.id)
       = link_to 'Reset votes', reset_votes_game_path(@game), method: :delete, class: "btn btn-danger"
       = link_to 'Show results', show_results_game_path(@game), method: :get, class: "btn btn-success"
-
-    - if game_is_closed?(@game)
-      %p This game has closed. Congratulations to the winner.
 
 %hr
 
