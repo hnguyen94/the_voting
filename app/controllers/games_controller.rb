@@ -8,6 +8,12 @@ class GamesController < ApplicationController
   end
 
   def show
+    if !current_user_in_game?
+      flash[:alert] = 'You can not enter a running game!'
+
+      return redirect_to games_path
+    end
+
     @current_player = Player.find_by(user_id: current_user.id)
   end
 
@@ -68,6 +74,10 @@ class GamesController < ApplicationController
   end
 
   private
+
+  def current_user_in_game?
+    @game.players.include?(current_user)
+  end
 
   def find_game_params
     @game = Game.find(params[:id])
