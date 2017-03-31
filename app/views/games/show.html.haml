@@ -30,6 +30,6 @@
 
   - if game_is_open?(@game)
     - if @game.participating?(current_user)
-      = link_to 'Remove me', game_player_path(@game, current_user), method: :delete, class:"btn btn-danger"
+      = link_to 'Remove me', game_player_path(@game, @current_player), method: :delete, class:"btn btn-danger"
     - else
       = link_to 'Add me', game_players_path(@game), :method => :post, class:"btn btn-success"

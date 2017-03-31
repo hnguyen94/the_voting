@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class PlayersController < ApplicationController
   before_filter :set_game, except: [:index]
-  before_filter :set_current_player, only: [:upvote, :unvote]
+  before_filter :set_current_player, only: [:upvote, :unvote, :destroy]
   before_filter :set_player, only: [:destroy, :upvote, :unvote]
 
   def index
@@ -37,7 +37,7 @@ class PlayersController < ApplicationController
   def unvote
     @current_player.unvote_for @player
     @player.update(votes: @player.votes_count)
-    
+
     flash[:notice] = 'You have unvoted!'
     redirect_to game_path(@game)
   end
