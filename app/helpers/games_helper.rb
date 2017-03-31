@@ -6,9 +6,10 @@ module GamesHelper
     closed: 'label-danger'
   }.freeze
 
-  def get_player_from_user(game, user_id)
-    player = game.players.find_all { |player| player.user_id == user_id }
-  end
+  # NOTE: Method used?
+  # def get_player_from_user(game, user_id)
+  #   player = game.players.find_all { |player| player.user_id == user_id }
+  # end
 
   def current_user_game_owner?(game, user_id)
     game.owner == user_id
