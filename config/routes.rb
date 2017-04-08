@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :games do
     member do
       post 'start'
+      post 'close'
       get 'show_results', path: 'results'
       delete 'reset_votes'
     end

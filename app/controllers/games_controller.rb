@@ -54,6 +54,12 @@ class GamesController < ApplicationController
     redirect_to @game
   end
 
+  def close
+    Game.update(@game.id, status: 'closed')
+
+    redirect_to @game
+  end
+
   def show_results
     if Vote.all.count != @game.players.count
       flash[:alert] = 'Not everyone has voted'
