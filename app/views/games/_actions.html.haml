@@ -4,5 +4,6 @@
       Actions
       %span.caret
     %ul.dropdown-menu{"aria-labelledby" => "actions-#{game.id}"}
-      %li= link_to 'Edit', edit_game_path(game)
+      - if game.open?
+        %li= link_to 'Edit', edit_game_path(game)
       %li= link_to 'Delete', game_path(game), method: :delete, data: {confirm: 'Are you sure?'}
