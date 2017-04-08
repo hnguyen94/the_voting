@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class GamesController < ApplicationController
-  before_filter :find_game_params, except: [:index, :new, :create]
+  before_filter :find_game_params, only: [:show, :update, :destroy, :start, :close, :show_results, :reset_votes]
   before_filter :ensure_logged_in
 
   def index
