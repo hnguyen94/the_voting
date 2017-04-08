@@ -19,3 +19,8 @@
 
 # Ignore application configuration
 /config/application.yml
+
+#ignore idea files
+.idea/
+
+
