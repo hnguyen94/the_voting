@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class PlayersController < ApplicationController
   before_filter :set_game, except: [:index]
   before_filter :set_current_player, only: [:upvote, :unvote, :destroy]
@@ -55,8 +56,4 @@ class PlayersController < ApplicationController
   def set_current_player
     @current_player = Player.find_by!(user_id: current_user.id)
   end
-  # def player_params
-  #   params.require(:player).permit(:user_id, :player_id)
-  #   params.require(:player).permit(:user_id)
-  # end
 end
