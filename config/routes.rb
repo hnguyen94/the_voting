@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :games do
     member do
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
   root 'welcome#index'
-
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
