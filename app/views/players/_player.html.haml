@@ -1,7 +1,7 @@
 %tr
   %td
     %span.panel-primary= player.name
-    - if !player.image.nil?
+    - unless player.image.nil?
       = image_tag(player.image, alt: "player")
     %span.badge.badge-size= player.votes_for if action_name == 'show_results'
 
