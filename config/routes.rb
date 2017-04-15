@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
+  resources :users
+  get '/signup', to: 'users#new'
+
+
   # Login
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
