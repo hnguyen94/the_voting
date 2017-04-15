@@ -13,7 +13,7 @@
       - elsif !@current_player.voted?
         = link_to upvote_game_player_path(game ,player), method: :post do
           %span.glyphicon.glyphicon-ok.icon-size.icon-success
-  - else
+  - elsif game.live?
     %td
 
   - if game.open? && current_user_game_owner?(game, current_user.id)
