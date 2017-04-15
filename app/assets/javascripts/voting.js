@@ -1,7 +1,7 @@
 
-setUpEventListener()
+setUpVoteListener()
 
-function setUpEventListener(){
+function setUpVoteListener(){
   document.querySelector('.table').addEventListener('click', function(event){
     document.querySelectorAll('.table tr td').forEach(function(element){
       if(element.id === event.target.id){
