@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class GamesController < ApplicationController
   before_filter :find_game_params, only: [:show, :update, :destroy, :start, :close, :show_results, :reset_votes]
   before_filter :ensure_logged_in
@@ -8,11 +9,11 @@ class GamesController < ApplicationController
   end
 
   def show
-    # if !current_user_in_game? && @game.live? && @game.owner != current_user.id
-    #   flash[:alert] = 'You can not enter a running game!'
-    #
-    #   return redirect_to games_path
-    # end
+    if !current_user_in_game? && @game.live? && @game.owner != current_user.id
+      flash[:alert] = 'You can not enter a running game!'
+
+      return redirect_to games_path
+    end
 
     @current_player = Player.find_by(user_id: current_user.id)
   end
@@ -54,6 +55,12 @@ class GamesController < ApplicationController
     redirect_to @game
   end
 
+  def close
+    Game.update(@game.id, status: 'closed')
+
+    redirect_to @game
+  end
+
   def show_results
     if Vote.all.count != @game.players.count
       flash[:alert] = 'Not everyone has voted'
@@ -76,7 +83,7 @@ class GamesController < ApplicationController
   private
 
   def current_user_in_game?
-    @game.players.include?(current_user)
+    @game.players.include?(Player.find_by(user_id: current_user.id))
   end
 
   def find_game_params

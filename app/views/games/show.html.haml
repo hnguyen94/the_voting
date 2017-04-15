@@ -22,6 +22,7 @@
     - if @game.live? && current_user_game_owner?(@game, current_user.id)
       = link_to 'Reset votes', reset_votes_game_path(@game), method: :delete, class: "btn btn-danger"
       = link_to 'Show results', show_results_game_path(@game), method: :get, class: "btn btn-success"
+      = link_to 'Close game', close_game_path(@game), method: :post, class: "btn btn-danger"
 
 %hr
 
