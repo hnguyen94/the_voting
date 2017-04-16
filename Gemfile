@@ -56,7 +56,9 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'railroady'
   gem 'rubocop'
+  gem 'rspec-rails'
 end
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.0.5'
