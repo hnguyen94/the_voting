@@ -4,6 +4,7 @@ class GamesController < ApplicationController
   before_filter :find_game_params, only: [:show, :update, :destroy, :start, :close, :show_results, :reset_votes]
   before_filter :set_current_player, only: [:reset_votes]
   before_filter :ensure_logged_in
+  before_filter :order_players_by_name, only: [:reset_votes, :show]
 
   def index
     @games = Game.all
@@ -68,8 +69,8 @@ class GamesController < ApplicationController
 
       return
     end
-
-    render 'players/_player', game: @game, layout: false
+    @ordered_players = @game.players.order(votes: 'desc')
+    render 'players/_player', game: @game, ordered_players: @ordered_players, layout: false
   end
 
   def reset_votes
@@ -78,10 +79,14 @@ class GamesController < ApplicationController
       flash[:notice] = 'Votes resetted'
     end
 
-    render 'players/_player', game: @game, layout: false
+    render 'players/_player', game: @game, ordered_players: @ordered_players, layout: false
   end
 
   private
+
+  def order_players_by_name
+    @ordered_players = @game.players
+  end
 
   def current_user_in_game?
     @game.players.include?(Player.find_by(user_id: current_user.id))
