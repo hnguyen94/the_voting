@@ -4,6 +4,7 @@ class PlayersController < ApplicationController
   before_filter :set_game, except: [:index]
   before_filter :set_current_player, only: [:upvote, :unvote, :destroy]
   before_filter :set_player, only: [:destroy, :upvote, :unvote]
+  before_filter :order_players_by_name, only: [:upvote, :unvote]
 
   def index
     @players = Player.all
@@ -24,15 +25,14 @@ class PlayersController < ApplicationController
   def upvote
     if current_user.id == @player.user_id
       flash[:alert] = "You can'vote on yourself. Please vote someone else"
-
-      return render 'players/_player' , game: @game, layout: false
+      return render 'players/_player' , game: @game, ordered_players: @ordered_players, layout: false
     end
 
     @current_player.vote_for @player
     @player.update(votes: @player.votes_count)
 
     flash[:notice] = 'You have voted!'
-    render 'players/_player', game: @game, layout: false
+    render 'players/_player', game: @game, ordered_players: @ordered_players , layout: false
   end
 
   def unvote
@@ -40,10 +40,14 @@ class PlayersController < ApplicationController
     @player.update(votes: @player.votes_count)
 
     flash[:notice] = 'You have unvoted!'
-    render 'players/_player', game: @game, layout: false
+    render 'players/_player', game: @game, ordered_players: @ordered_players , layout: false
   end
 
   private
+
+  def order_players_by_name
+    @ordered_players = @game.players
+  end
 
   def set_player
     @player = Player.find_by!(id: params[:id])
