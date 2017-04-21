@@ -2,6 +2,7 @@
 
 class GamesController < ApplicationController
   before_filter :find_game_params, only: [:show, :update, :destroy, :start, :close, :show_results, :reset_votes]
+  before_filter :set_current_player, only: [:reset_votes]
   before_filter :ensure_logged_in
 
   def index
@@ -65,10 +66,10 @@ class GamesController < ApplicationController
     if Vote.all.count != @game.players.count
       flash[:alert] = 'Not everyone has voted'
 
-      return redirect_to @game
+      return
     end
 
-    render 'games/results'
+    render 'players/_player', game: @game, layout: false
   end
 
   def reset_votes
@@ -77,13 +78,17 @@ class GamesController < ApplicationController
       flash[:notice] = 'Votes resetted'
     end
 
-    redirect_to @game
+    render 'players/_player', game: @game, layout: false
   end
 
   private
 
   def current_user_in_game?
     @game.players.include?(Player.find_by(user_id: current_user.id))
+  end
+
+  def set_current_player
+    @current_player = Player.find_by!(user_id: current_user.id)
   end
 
   def find_game_params
