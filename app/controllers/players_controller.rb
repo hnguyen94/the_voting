@@ -25,14 +25,14 @@ class PlayersController < ApplicationController
     if current_user.id == @player.user_id
       flash[:alert] = "You can'vote on yourself. Please vote someone else"
 
-      return redirect_to game_path(@game)
+      return render 'players/_player' , game: @game, layout: false
     end
 
     @current_player.vote_for @player
     @player.update(votes: @player.votes_count)
 
     flash[:notice] = 'You have voted!'
-    redirect_to game_path(@game)
+    render 'players/_player', game: @game, layout: false
   end
 
   def unvote
@@ -40,7 +40,7 @@ class PlayersController < ApplicationController
     @player.update(votes: @player.votes_count)
 
     flash[:notice] = 'You have unvoted!'
-    redirect_to game_path(@game)
+    render 'players/_player', game: @game, layout: false
   end
 
   private
