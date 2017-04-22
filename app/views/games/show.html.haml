@@ -1,4 +1,3 @@
-
 %h1
   = @game.title
   = status_label_for(@game)
@@ -21,7 +20,7 @@
 
     - if @game.live? && current_user_game_owner?(@game, current_user.id)
       %a{href: reset_votes_game_path(@game), class: 'btn btn-danger', id: 'reset_votes'}Reset Votes
-      %a{href: show_results_game_path(@game), class: 'btn btn-success', id: 'show_results'}Show Results
+      %a{href: results_game_path(@game), class: 'btn btn-success', id: 'show_results'}Show Results
       = link_to 'Close game', close_game_path(@game), method: :post, class: "btn btn-danger"
 
 %hr
