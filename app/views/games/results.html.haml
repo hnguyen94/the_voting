@@ -6,11 +6,10 @@
 .well.well-sm
   %p
     - if @game.live? && current_user_game_owner?(@game, current_user.id)
-      = link_to 'Reset votes', reset_votes_game_path(@game), method: :delete, class: "btn btn-danger"
+      %a{href: reset_votes_game_path(@game), class: 'btn btn-danger', id: 'reset_votes'}Reset Votes
 %hr
 
 .well
   %h2 Players
   %table.table.table-striped.table-bordered.table-condensed
-    - @game.players.order('votes desc').each do |player|
-      = render 'players/player', player: player, game: @game
+    = render 'players/player', game: @game

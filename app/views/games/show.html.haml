@@ -20,8 +20,8 @@
       %p This game has started and is in progress. Good luck! Press the green button to vote for someone or the red button to unvote/undo, then wait!
 
     - if @game.live? && current_user_game_owner?(@game, current_user.id)
-      = link_to 'Reset votes', reset_votes_game_path(@game), method: :delete, class: "btn btn-danger"
-      = link_to 'Show results', show_results_game_path(@game), method: :get, class: "btn btn-success"
+      %a{href: reset_votes_game_path(@game), class: 'btn btn-danger', id: 'reset_votes'}Reset Votes
+      %a{href: show_results_game_path(@game), class: 'btn btn-success', id: 'show_results'}Show Results
       = link_to 'Close game', close_game_path(@game), method: :post, class: "btn btn-danger"
 
 %hr
@@ -29,8 +29,7 @@
 .well
   %h2 Players
   %table.table.table-striped.table-bordered.table-condensed
-    - @game.players.order('id asc').each do |player|
-      = render 'players/player', player: player, game: @game
+    = render 'players/player', game: @game
 
   - if @game.open?
     - if @game.participating?(current_user)
