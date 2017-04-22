@@ -25,14 +25,14 @@ class PlayersController < ApplicationController
   def upvote
     if current_user.id == @player.user_id
       flash[:alert] = "You can'vote on yourself. Please vote someone else"
-      return render 'players/_player' , game: @game, ordered_players: @ordered_players, layout: false
+      return render 'players/_player' , :locals => { game: @game, ordered_players: @ordered_players}, layout: false
     end
 
     @current_player.vote_for @player
     @player.update(votes: @player.votes_count)
 
     flash[:notice] = 'You have voted!'
-    render 'players/_player', game: @game, ordered_players: @ordered_players , layout: false
+    render 'players/_player', locals: { game: @game, ordered_players: @ordered_players} , layout: false
   end
 
   def unvote
@@ -40,7 +40,7 @@ class PlayersController < ApplicationController
     @player.update(votes: @player.votes_count)
 
     flash[:notice] = 'You have unvoted!'
-    render 'players/_player', game: @game, ordered_players: @ordered_players , layout: false
+    render 'players/_player', :locals => { game: @game, ordered_players: @ordered_players} , layout: false
   end
 
   private

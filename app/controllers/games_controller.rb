@@ -70,7 +70,7 @@ class GamesController < ApplicationController
       return
     end
     @ordered_players = @game.players.order(votes: 'desc')
-    render 'players/_player', game: @game, ordered_players: @ordered_players, layout: false
+    render 'players/_player', :locals => { game: @game, ordered_players: @ordered_players}, layout: false
   end
 
   def reset_votes
@@ -79,7 +79,7 @@ class GamesController < ApplicationController
       flash[:notice] = 'Votes resetted'
     end
 
-    render 'players/_player', game: @game, ordered_players: @ordered_players, layout: false
+    render 'players/_player', :locals => { game: @game, ordered_players: @ordered_players}, layout: false
   end
 
   private
