@@ -19,8 +19,8 @@
       %p This game has started and is in progress. Good luck! Press the green button to vote for someone or the red button to unvote/undo, then wait!
 
     - if @game.live? && current_user_game_owner?(@game, current_user.id)
-      %a{href: reset_votes_game_path(@game), class: 'btn btn-danger', id: 'reset_votes'}Reset Votes
-      %a{href: results_game_path(@game), class: 'btn btn-success', id: 'show_results'}Show Results
+      %a{href: reset_votes_game_path(@game), class: 'btn btn-danger', id: 'reset_votes'} Reset Votes
+      %a{href: results_game_path(@game), class: 'btn btn-success', id: 'show_results'} Show Results
       = link_to 'Close game', close_game_path(@game), method: :post, class: "btn btn-danger"
 
 %hr

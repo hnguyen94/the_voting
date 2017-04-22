@@ -84,7 +84,6 @@ class GamesController < ApplicationController
 
   private
 
-
   def current_user_in_game?
     @game.players.include?(Player.find_by(user_id: current_user.id))
   end
