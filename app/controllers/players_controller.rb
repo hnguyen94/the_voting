@@ -4,7 +4,6 @@ class PlayersController < ApplicationController
   before_filter :set_game, except: [:index]
   before_filter :set_current_player, only: [:upvote, :unvote, :destroy]
   before_filter :set_player, only: [:destroy, :upvote, :unvote]
-  before_filter :order_players_by_name, only: [:upvote, :unvote]
 
   def index
     @players = Player.all
@@ -44,10 +43,6 @@ class PlayersController < ApplicationController
   end
 
   private
-
-  def order_players_by_name
-    @ordered_players = @game.players
-  end
 
   def set_player
     @player = Player.find_by!(id: params[:id])
