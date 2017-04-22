@@ -3,7 +3,7 @@
 
 - @games.each do |game|
   .well.game-container
-    = status_label_for(game)
+    = link_to status_label_for(game), game
 
     %h3.title= link_to game.title, game
 

@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   resources :games do
     member do
       post 'start'
       post 'close'
-      get 'show_results', path: 'results'
+      get 'results', to: 'games#show_results'
       delete 'reset_votes'
     end
     resources :players, only: [:create, :destroy] do
@@ -22,7 +21,6 @@ Rails.application.routes.draw do
 
   resources :users
   get '/signup', to: 'users#new'
-
 
   # Login
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
