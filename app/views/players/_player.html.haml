@@ -1,20 +1,18 @@
-%tr
-  %td
-    %span.panel-primary= player.name
-    - unless player.image.nil?
-      = image_tag(player.image, alt: "player")
-    %span.badge.badge-size= player.votes_for if action_name == 'show_results'
-
-  - if game.live? && current_user.id != player.user_id && action_name != 'show_results'
-    %td{style: 'line-height: 3.6'}
-      - if @current_player.voted? && @current_player.voted_for?(player)
-        = link_to unvote_game_player_path(game, player), method: :post do
-          %span.glyphicon.glyphicon-remove.icon-size.icon-danger
-      - elsif !@current_player.voted?
-        = link_to upvote_game_player_path(game ,player), method: :post do
-          %span.glyphicon.glyphicon-ok.icon-size.icon-success
-  - elsif game.live?
+- ordered_players.each do |player|
+  %tr{name: player.id}
     %td
+      %span.panel-primary= player.name
+      - unless player.image.nil?
+        = image_tag(player.image, alt: "player")
+      %span.badge.badge-size= player.votes_for if action_name == 'show_results'
 
-  - if game.open? && current_user_game_owner?(game, current_user.id)
-    %td= link_to 'Delete', game_player_path(game, player), method: :delete, class:"btn btn-danger"
+    - if game.live? && current_user.id != player.user_id && action_name != 'show_results'
+      %td{style: 'line-height: 3.6'}
+        - if @current_player.voted? && @current_player.voted_for?(player)
+          %span{class: 'glyphicon glyphicon-remove', name: unvote_game_player_path(game, player)}
+        - elsif !@current_player.voted?
+          %span{class: 'glyphicon glyphicon-ok',name: upvote_game_player_path(game ,player)}
+    - else
+      %td
+    - if game.open? && current_user_game_owner?(game, current_user.id)
+      %td= link_to 'Delete', game_player_path(game, player), method: :delete, class:"btn btn-danger"
