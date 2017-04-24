@@ -2,15 +2,9 @@
 
 require 'httparty'
 
-module Services
-  class Quote
+module QuoteService
+  class QuoteApi
     include HTTParty
-    attr_reader :text, :author
-
-    def initialize(text:, author:)
-      @text   = text
-      @author = author
-    end
 
     def self.fetch
       response = post('https://andruxnet-random-famous-quotes.p.mashape.com/?cat=movies', headers: {
