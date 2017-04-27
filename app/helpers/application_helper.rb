@@ -2,10 +2,6 @@
 
 module ApplicationHelper
   def show_user_name
-    # NOTE: Research for current_user&.name
-    # current_user.name if current_user
-    # current_user&.name
-    # current_user.name if current_user
     current_user&.name
   end
 
