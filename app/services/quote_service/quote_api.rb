@@ -13,8 +13,8 @@ module QuoteService
         'Accept' => 'application/json'
       })
 
-      text   = JSON.parse(response)['quote']
-      author = JSON.parse(response)['author']
+      text   = JSON.parse(response.body)['quote']
+      author = JSON.parse(response.body)['author']
 
       Quote.new(text: text, author: author)
     end
