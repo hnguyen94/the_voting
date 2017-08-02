@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   before_filter :ensure_logged_in
 
   def index
-    @games = Game.all
+    @games = GameDecorator.decorate_collection(Game.all)
   end
 
   def show
@@ -93,7 +93,7 @@ class GamesController < ApplicationController
   end
 
   def find_game_params
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:id]).decorate
   end
 
   def game_params
