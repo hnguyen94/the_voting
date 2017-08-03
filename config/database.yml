@@ -28,6 +28,13 @@ development:
   password:
   host: db
 
+preview:
+  <<: *default
+  database: thevoting
+  username: thevoting
+  password: eichoht2ahJe
+  host: the-voting.postgres.preview.ams1.xing.com
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
