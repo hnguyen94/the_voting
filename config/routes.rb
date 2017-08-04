@@ -34,4 +34,7 @@ Rails.application.routes.draw do
 
   # System alive
   get '/_system/alive'
+
+  mount API::Base, at: '/'
+  mount GrapeSwaggerRails::Engine, at: '/documentation'
 end
